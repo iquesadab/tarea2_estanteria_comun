@@ -1,0 +1,19 @@
+// Sección de bienvenida
+.bienvenida {
+    padding: espacio(6);
+    background-color: #FFFFFF;
+    border-radius: $border-radius;
+
+    @include sombra-suave;
+
+    // Título de la sección
+    h2 {
+        color: $primary;
+        margin-bottom: espacio(4);
+    }
+
+    // Párrafo de la sección
+    p {
+        margin-bottom: espacio(4);
+    }
+}

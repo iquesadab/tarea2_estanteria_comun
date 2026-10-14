@@ -1,0 +1,9 @@
+// Variables y personalización
+@import "variables";
+
+// Bootstrap personalizado
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Estilos propios
+@import "mixins";
+@import "componentes";
