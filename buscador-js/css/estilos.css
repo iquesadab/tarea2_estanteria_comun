@@ -11859,18 +11859,155 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.bienvenida {
-  padding: 1.5rem;
+/* VARIABLES CSS */
+:root {
+  --espacio-tarjetas: 1.5rem;
+  --ancho-portada: 100%;
+  --transicion-suave: 0.3s ease;
+}
+
+/* SECCIÓN DE INICIO */
+.seccion-inicio {
+  background-color: #E2EFE8;
+}
+.seccion-inicio h1, .seccion-inicio .h1 {
+  color: #2F6B5B;
+}
+.seccion-inicio p {
+  max-width: 40rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* ENCABEZADOS DE SECCIÓN */
+.encabezado-seccion h2, .encabezado-seccion .h2 {
+  color: #2F6B5B;
+  font-weight: 700;
+}
+
+/* FORMULARIO DE BÚSQUEDA */
+.buscador-formulario {
   background-color: #FFFFFF;
+  padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
-.bienvenida h2, .bienvenida .h2 {
-  color: #2F6B5B;
-  margin-bottom: 1rem;
+
+/* GRILLA DE LIBROS */
+.grilla-libros {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-tarjetas);
 }
-.bienvenida p {
-  margin-bottom: 1rem;
+
+/* TARJETAS DE LIBROS */
+.tarjeta-libro {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform var(--transicion-suave), box-shadow var(--transicion-suave);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.tarjeta-libro:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.tarjeta-libro .portada-libro {
+  width: var(--ancho-portada);
+  height: 15rem;
+  object-fit: contain;
+  background-color: #EDF3EF;
+  padding: 0.75rem;
+}
+.tarjeta-libro .contenido-libro {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+}
+.tarjeta-libro h3, .tarjeta-libro .h3 {
+  font-size: 1.1rem;
+  color: #2F6B5B;
+  font-weight: 700;
+}
+.tarjeta-libro p {
+  color: #24352F;
+  font-size: 0.9rem;
+}
+.tarjeta-libro .acciones-libro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* LISTA DE LECTURAS */
+.seccion-lecturas {
+  background-color: #EAF3EE;
+}
+.seccion-lecturas .table {
+  --bs-table-bg: transparent;
+}
+
+/* FORMULARIO DE PROPUESTAS */
+.formulario-propuesta {
+  background-color: #FFFFFF;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.autor-fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.autor-fila .form-control {
+  flex: 1 1 12rem;
+}
+.autor-fila .invalid-feedback {
+  flex-basis: 100%;
+}
+
+/* ANIMACIONES DE LA LISTA */
+.lectura-entrada {
+  animation: aparecer 0.35s ease;
+}
+
+.lectura-salida {
+  opacity: 0;
+  transform: translateX(1rem);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* TABLET */
+@media (min-width: 48rem) {
+  .grilla-libros {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* ESCRITORIO */
+@media (min-width: 64rem) {
+  .grilla-libros {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .buscador-formulario,
+  .formulario-propuesta {
+    padding: 2rem;
+  }
 }
 
 /*# sourceMappingURL=estilos.css.map */

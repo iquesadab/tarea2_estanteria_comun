@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,38 +6,390 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Estantería Común</title>
+    <title>Estantería Común | Club de lectura</title>
 
-    <!-- CSS compilado desde Sass -->
+    <!-- CSS de Bootstrap personalizado con Sass -->
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
 
-    <header class="bg-primary text-white py-4">
-        <div class="container">
-            <h1>Estantería Común</h1>
-            <p class="mb-0">Un espacio para descubrir y compartir libros.</p>
-        </div>
+    <!-- ENCABEZADO -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+
+                <a class="navbar-brand fw-bold" href="#">
+                    Estantería Común
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal"
+                    aria-expanded="false"
+                    aria-label="Abrir menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#buscar">Buscar libros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#lecturas">Mis lecturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#proponer">Proponer libro</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
     </header>
 
-    <main class="container my-5">
+    <main>
 
-        <section class="bienvenida">
+        <!-- BIENVENIDA -->
+        <section class="seccion-inicio py-5">
+            <div class="container text-center">
+                <h1 class="fw-bold mb-3">Descubre tu próxima lectura</h1>
+                <p class="mx-auto mb-0">
+                    Busca libros, descubre nuevas historias y comparte
+                    tus recomendaciones con nuestra comunidad lectora.
+                </p>
+            </div>
+        </section>
 
-            <h2>Bienvenidos a nuestro club de lectura</h2>
+        <!-- BUSCADOR -->
+        <section id="buscar" class="container py-5">
 
-            <p>
-                Explora libros, descubre nuevas historias y organiza tus lecturas.
-            </p>
+            <div class="encabezado-seccion mb-4">
+                <h2>Explorar libros</h2>
+                <p class="text-secondary">
+                    Busca por título o nombre del autor.
+                </p>
+            </div>
 
-            <button class="btn btn-primary">
-                Buscar libros
-            </button>
+            <form id="formBusqueda" class="buscador-formulario">
+
+                <div class="row g-3 align-items-end">
+
+                    <div class="col-12 col-md-9">
+                        <label for="textoBusqueda" class="form-label">
+                            ¿Qué libro te gustaría encontrar?
+                        </label>
+
+                        <input
+                            type="search"
+                            class="form-control"
+                            id="textoBusqueda"
+                            name="busqueda"
+                            placeholder="Ejemplo: Cien años de soledad"
+                            required
+                            minlength="2">
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100">
+                            Buscar libros
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+            <!-- MENSAJES DE CARGA, ERROR Y RESULTADOS -->
+            <div
+                id="mensajeBusqueda"
+                class="mt-4"
+                role="status"
+                aria-live="polite">
+            </div>
+
+            <!-- Las tarjetas se crearán desde JavaScript -->
+            <div id="resultadosLibros" class="grilla-libros mt-4">
+            </div>
+
+        </section>
+
+        <!-- LISTA DE LECTURAS -->
+        <section id="lecturas" class="seccion-lecturas py-5">
+
+            <div class="container">
+
+                <div class="encabezado-seccion mb-4">
+                    <h2>Mi lista de lecturas</h2>
+                    <p class="text-secondary">
+                        Organiza los libros que deseas leer,
+                        estás leyendo o ya terminaste.
+                    </p>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Libro</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <!-- JavaScript agregará las filas -->
+                        <tbody id="tablaLecturas">
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <p
+                    id="mensajeLecturas"
+                    class="text-secondary"
+                    role="status"
+                    aria-live="polite">
+                    Todavía no has agregado libros a tu lista.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- FORMULARIO DE PROPUESTAS -->
+        <section id="proponer" class="container py-5">
+
+            <div class="encabezado-seccion mb-4">
+                <h2>Propón un libro</h2>
+                <p class="text-secondary">
+                    Recomienda una lectura para nuestro club.
+                </p>
+            </div>
+
+            <form id="formPropuesta" class="formulario-propuesta" novalidate>
+
+                <div class="row g-3">
+
+                    <!-- TÍTULO -->
+                    <div class="col-12">
+                        <label for="tituloPropuesta" class="form-label">
+                            Título del libro
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="tituloPropuesta"
+                            name="titulo"
+                            required
+                            maxlength="150">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- AUTORES -->
+                    <div class="col-12">
+                        <label class="form-label" for="autorInicial">
+                            Autores (mínimo 1, máximo 5)
+                        </label>
+
+                        <div id="contenedorAutores">
+                            <div class="autor-fila">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="autorInicial"
+                                    name="autores"
+                                    placeholder="Nombre del autor"
+                                    required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="btnAgregarAutor"
+                            class="btn btn-outline-primary mt-3">
+                            + Agregar autor
+                        </button>
+                    </div>
+
+                    <!-- AÑO Y PÁGINAS -->
+                    <div class="col-12 col-md-6">
+                        <label for="anioPropuesta" class="form-label">
+                            Año de publicación
+                        </label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="anioPropuesta"
+                            name="anio"
+                            min="1"
+                            required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="paginasPropuesta" class="form-label">
+                            Cantidad de páginas
+                        </label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="paginasPropuesta"
+                            name="paginas"
+                            min="1"
+                            required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- GÉNERO -->
+                    <div class="col-12 col-md-6">
+                        <label for="generoPropuesta" class="form-label">
+                            Género literario
+                        </label>
+                        <select
+                            class="form-select"
+                            id="generoPropuesta"
+                            name="genero"
+                            required>
+                            <option value="">Seleccione un género</option>
+                            <option value="novela">Novela</option>
+                            <option value="fantasia">Fantasía</option>
+                            <option value="misterio">Misterio</option>
+                            <option value="romance">Romance</option>
+                            <option value="ciencia-ficcion">Ciencia ficción</option>
+                            <option value="historia">Historia</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- FECHA -->
+                    <div class="col-12 col-md-6">
+                        <label for="fechaPropuesta" class="form-label">
+                            Fecha de la sesión
+                        </label>
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="fechaPropuesta"
+                            name="fecha"
+                            required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- CORREO -->
+                    <div class="col-12">
+                        <label for="correoPropuesta" class="form-label">
+                            Correo electrónico
+                        </label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="correoPropuesta"
+                            name="correo"
+                            placeholder="correo@ejemplo.com"
+                            required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- MOTIVO -->
+                    <div class="col-12">
+                        <label for="motivoPropuesta" class="form-label">
+                            ¿Por qué recomiendas este libro?
+                        </label>
+                        <textarea
+                            class="form-control"
+                            id="motivoPropuesta"
+                            name="motivo"
+                            rows="4"
+                            required
+                            minlength="10"></textarea>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">
+                            Enviar propuesta
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+            <div
+                id="mensajePropuesta"
+                class="mt-3"
+                role="status"
+                aria-live="polite">
+            </div>
 
         </section>
 
     </main>
+
+    <!-- MODAL PARA DETALLES DEL LIBRO -->
+    <div
+        class="modal fade"
+        id="modalLibro"
+        tabindex="-1"
+        aria-labelledby="tituloModalLibro"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="tituloModalLibro">
+                        Detalle del libro
+                    </h2>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Cerrar">
+                    </button>
+                </div>
+
+                <div class="modal-body" id="contenidoModalLibro">
+                    <!-- JavaScript mostrará los detalles -->
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-primary text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">
+                Estantería Común · Club de lectura comunitario
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript local de Bootstrap -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript propio -->
+    <script type="module" src="js/app.js"></script>
 
 </body>
 

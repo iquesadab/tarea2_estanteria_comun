@@ -1,19 +1,172 @@
-// Sección de bienvenida
-.bienvenida {
-    padding: espacio(6);
+/* VARIABLES CSS */
+:root {
+    --espacio-tarjetas: 1.5rem;
+    --ancho-portada: 100%;
+    --transicion-suave: 0.3s ease;
+}
+
+/* SECCIÓN DE INICIO */
+.seccion-inicio {
+    background-color: #E2EFE8;
+
+    h1 {
+        color: $primary;
+    }
+
+    p {
+        max-width: 40rem;
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+}
+
+/* ENCABEZADOS DE SECCIÓN */
+.encabezado-seccion {
+    h2 {
+        color: $primary;
+        font-weight: 700;
+    }
+}
+
+/* FORMULARIO DE BÚSQUEDA */
+.buscador-formulario {
     background-color: #FFFFFF;
+    padding: espacio(6);
     border-radius: $border-radius;
 
     @include sombra-suave;
+}
 
-    // Título de la sección
-    h2 {
-        color: $primary;
-        margin-bottom: espacio(4);
+/* GRILLA DE LIBROS */
+.grilla-libros {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-tarjetas);
+}
+
+/* TARJETAS DE LIBROS */
+.tarjeta-libro {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: $border-radius;
+    overflow: hidden;
+    transition: transform var(--transicion-suave),
+                box-shadow var(--transicion-suave);
+
+    @include sombra-suave;
+
+    &:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
-    // Párrafo de la sección
+    .portada-libro {
+        width: var(--ancho-portada);
+        height: 15rem;
+        object-fit: contain;
+        background-color: #EDF3EF;
+        padding: espacio(3);
+    }
+
+    .contenido-libro {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: espacio(4);
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        color: $primary;
+        font-weight: 700;
+    }
+
     p {
-        margin-bottom: espacio(4);
+        color: $body-color;
+        font-size: 0.9rem;
+    }
+
+    .acciones-libro {
+        display: flex;
+        flex-wrap: wrap;
+        gap: espacio(2);
+        margin-top: auto;
+    }
+}
+
+/* LISTA DE LECTURAS */
+.seccion-lecturas {
+    background-color: #EAF3EE;
+
+    .table {
+        --bs-table-bg: transparent;
+    }
+}
+
+/* FORMULARIO DE PROPUESTAS */
+.formulario-propuesta {
+    background-color: #FFFFFF;
+    padding: espacio(6);
+    border-radius: $border-radius;
+
+    @include sombra-suave;
+}
+
+.autor-fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: espacio(2);
+    margin-bottom: espacio(3);
+
+    .form-control {
+        flex: 1 1 12rem;
+    }
+
+    .invalid-feedback {
+        flex-basis: 100%;
+    }
+}
+
+/* ANIMACIONES DE LA LISTA */
+.lectura-entrada {
+    animation: aparecer 0.35s ease;
+}
+
+.lectura-salida {
+    opacity: 0;
+    transform: translateX(1rem);
+    transition: opacity 0.3s ease,
+                transform 0.3s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLET */
+@media (min-width: 48rem) {
+    .grilla-libros {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ESCRITORIO */
+@media (min-width: 64rem) {
+    .grilla-libros {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .buscador-formulario,
+    .formulario-propuesta {
+        padding: espacio(8);
     }
 }
