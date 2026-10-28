@@ -11977,12 +11977,20 @@ textarea.form-control-lg {
   animation: aparecer 0.35s ease;
 }
 
+/* Animación para eliminar una lectura */
 .lectura-salida {
-  opacity: 0;
-  transform: translateX(1rem);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: desaparecer 0.3s ease forwards;
 }
 
+@keyframes desaparecer {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+}
 @keyframes aparecer {
   from {
     opacity: 0;
