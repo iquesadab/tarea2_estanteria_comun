@@ -1,0 +1,14 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="320" viewBox="0 0 240 320">
+
+    <rect width="240" height="320" rx="12" fill="#E2EFE8"></rect>
+
+    <rect x="45" y="55" width="150" height="210" rx="8" fill="#2F6B5B"></rect>
+
+    <path d="M120 90 V220 M120 100 Q90 85 65 100 V215 Q90 200 120 220 M120 100 Q150 85 175 100 V215 Q150 200 120 220" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round"></path>
+
+    <text x="120" y="285" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#24352F">
+        Sin portada
+    </text>
+
+</svg>

@@ -42,27 +42,27 @@ function crearTarjetaLibro(libro) {
     // Portada o mensaje alternativo.
     const direccionPortada = obtenerPortada(libro);
 
-    if (direccionPortada) {
+    const imagen = document.createElement("img");
 
-        const imagen = document.createElement("img");
+    imagen.src = direccionPortada || "img/Sin portada.svg";
 
-        imagen.src = direccionPortada;
-        imagen.alt = `Portada de ${libro.title || "libro"}`;
-        imagen.className = "portada-libro";
-        imagen.loading = "lazy";
+    imagen.alt = direccionPortada
+        ? `Portada de ${libro.title || "libro"}`
+        : "Imagen alternativa del libro";
 
-        tarjeta.append(imagen);
+    imagen.className = "portada-libro";
+    imagen.loading = "lazy";
 
-    } else {
+    // Si la imagen de Open Library falla, usa la alternativa.
+    imagen.addEventListener("error", () => {
 
-        const sinPortada = crearElemento(
-            "div",
-            "portada-libro d-flex align-items-center justify-content-center text-center",
-            "Portada no disponible"
-        );
+        if (!imagen.src.endsWith("/img/sin-portada.svg")) {
+            imagen.src = "img/Sin portada.svg";
+        }
 
-        tarjeta.append(sinPortada);
-    }
+    });
+
+    tarjeta.append(imagen);
 
     // Contenido de la tarjeta.
     const contenido = crearElemento("div", "contenido-libro");
