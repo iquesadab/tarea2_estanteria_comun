@@ -1,8 +1,12 @@
 
 import { buscarLibros } from "./api.js";
 import { mostrarLibros } from "./renderizado.js";
+
 // Activa los eventos de la lista de lecturas.
 import "./lecturas.js";
+
+// Activa el formulario para proponer libros.
+import "./formulario.js";
 
 // Elementos del formulario.
 const formulario = document.getElementById("formBusqueda");
