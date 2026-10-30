@@ -44,3 +44,28 @@ h1 {
     color: #2F6B5B;
     font-weight: 600;
 }
+
+/* Mantiene los botones de las tarjetas ordenados */
+.card .btn {
+    font-weight: 500;
+}
+
+/* Permite que los botones se acomoden en pantallas pequeñas */
+.card .d-flex.gap-2 {
+    flex-wrap: wrap;
+}
+
+/* Estilos de las etiquetas que muestran el estado */
+.badge {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Efecto visual al pasar el mouse por una tarjeta */
+.card {
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10) !important;
+}
