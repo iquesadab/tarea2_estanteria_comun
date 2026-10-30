@@ -1,22 +1,37 @@
+/*
+Componente principal de la aplicación.
+Por ahora muestra la estructura inicial del tablero.
+*/
+
+import Pagina from "./componentes/layout/Pagina.jsx";
+import Panel from "./componentes/comunes/Panel.jsx";
 
 function App() {
 
     return (
-        <main className="container py-5">
+        <Pagina>
 
-            <h1 className="text-primary">
-                Estantería Común
+            <h1 className="mb-4">
+                Tablero de lecturas
             </h1>
 
-            <p>
-                Tablero de lecturas de nuestro club.
-            </p>
+            <Panel titulo="Libros del club">
 
-            <div className="alert alert-success">
-                React y Bootstrap funcionan correctamente.
-            </div>
+                <p className="mb-0">
+                    Aquí aparecerán los libros del club de lectura.
+                </p>
 
-        </main>
+            </Panel>
+
+            <Panel titulo="Resumen de lecturas">
+
+                <p className="mb-0">
+                    Aquí aparecerá el resumen de los estados.
+                </p>
+
+            </Panel>
+
+        </Pagina>
     );
 }
 

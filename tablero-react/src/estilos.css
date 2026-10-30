@@ -22,3 +22,25 @@ body {
     background-color: #D1E7DD;
     color: #0F5132;
 }
+
+/* Estilos del encabezado */
+.navbar-brand {
+    font-weight: 700;
+}
+
+/* Estilos de los paneles */
+.card {
+    border: none;
+    border-radius: 0.75rem;
+}
+
+/* Estilos de los títulos */
+h1 {
+    color: #2F6B5B;
+    font-weight: 700;
+}
+
+.card-title {
+    color: #2F6B5B;
+    font-weight: 600;
+}
