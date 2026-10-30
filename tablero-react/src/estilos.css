@@ -4,3 +4,21 @@ body {
     background-color: #F4F8F5;
     color: #24352F;
 }
+
+/* Estado pendiente */
+.estado-pendiente {
+    background-color: #FFF3CD;
+    color: #664D03;
+}
+
+/* Estado leyendo */
+.estado-leyendo {
+    background-color: #CCE5FF;
+    color: #084298;
+}
+
+/* Estado leído */
+.estado-leido {
+    background-color: #D1E7DD;
+    color: #0F5132;
+}
