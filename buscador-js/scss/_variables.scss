@@ -1,10 +1,21 @@
-// Colores principales
-$primary: #2F6B5B;
-$secondary: #82B5A0;
+// COLORES PRINCIPALES
 
-// Colores generales
+// Verde principal para encabezados y botones.
+$primary: #2F6B5B;
+
+// Verde secundario más oscuro para mejorar el contraste.
+$secondary: #376B59;
+
+// Verde claro para fondos o detalles decorativos.
+$verde-claro: #82B5A0;
+
+// COLORES GENERALES
+
+// Fondo general de la página.
 $body-bg: #F4F8F5;
+
+// Color del texto principal.
 $body-color: #24352F;
 
-// Bordes
+// BORDES
 $border-radius: 0.75rem;
