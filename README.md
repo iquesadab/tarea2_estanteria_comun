@@ -104,3 +104,34 @@ de reflejar los cambios en la pantalla.
 Ambas formas permiten crear aplicaciones interactivas,
 pero React facilita dividir la interfaz en componentes
 reutilizables y mantener organizada la información.
+
+## Historial de commits
+
+La siguiente tabla muestra los commits realizados durante
+el desarrollo de la Tarea 2, incluyendo las funcionalidades,
+correcciones y documentación del proyecto.
+
+
+## Historial de commits
+
+La siguiente tabla muestra los commits realizados durante el desarrollo del proyecto, ordenados desde el primero hasta el último.
+
+| N.º | Hash | Fecha | Mensaje del commit | Descripción del cambio |
+|---|---|---|---|---|
+| 1 | 620fdf1 | 2026-10-13 | Initial commit | Creación inicial del repositorio. |
+| 2 | 0c2334a | 2026-10-13 | [new]: Crea estructura inicial de carpetas y archivos de la Tarea 2 | Organización inicial de las carpetas y archivos del proyecto. |
+| 3 | 2ee24ee | 2026-10-14 | [new]: Configura Bootstrap y Sass con estilos personalizados | Instalación y configuración de Bootstrap y Sass. |
+| 4 | 4c5625d | 2026-10-23 | [new]: Crea interfaz principal del buscador de libros | Desarrollo de la estructura visual de la Parte A. |
+| 5 | bd1ccc7 | 2026-10-27 | [new]: Implementa búsqueda de libros con Open Library | Integración de la API y visualización de resultados. |
+| 6 | bac7d36 | 2026-10-27 | [fix]: Agrega imagen alternativa para libros sin portada | Incorporación de una portada alternativa cuando no existe imagen. |
+| 7 | 3310a66 | 2026-10-27 | [new]: Implementa lista de lecturas interactiva | Funciones para agregar, cambiar estados y eliminar lecturas. |
+| 8 | c02d034 | 2026-10-28 | [new]: Implementa formulario de propuestas de libros | Formulario con campos dinámicos y validaciones. |
+| 9 | 594cd60 | 2026-10-28 | [docs]: Documenta depuración y optimización del buscador | Evidencias de depuración y comparación de Lazy Loading. |
+| 10 | cbb7869 | 2026-10-29 | [new]: Prepara estructura del tablero con React | Configuración inicial de React, Vite y Bootstrap. |
+| 11 | 4d7914e | 2026-10-30 | [new]: Agrega datos iniciales y utilidades de libros | Datos locales, estados, géneros y funciones auxiliares. |
+| 12 | 3038633 | 2026-10-30 | [new]: Crea componentes de diseño del tablero | Componentes Encabezado, Pagina y Panel. |
+| 13 | 27b1430 | 2026-10-30 | [new]: Muestra libros y permite cambiar su estado | Tarjetas de libros, useState, cambio de estados y eliminación. |
+| 14 | cee76bf | 2026-10-31 | [new]: Agrega filtros resumen y formulario React | Filtros combinados, resumen dinámico y formulario con validaciones. |
+| 15 | 66cc2cc | 2026-11-01 | [fix]: Corrige errores de contraste en la Parte A | Ajustes de colores Sass para mejorar la accesibilidad. |
+| 16 | bd092e4 | 2026-11-01 | [docs]: Completa documentación y revisión final | Actualización del README y documentación del proyecto. |
+
