@@ -69,3 +69,78 @@ h1 {
 .card:hover {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10) !important;
 }
+
+/* =========================================
+   RESUMEN DE LECTURAS
+   ========================================= */
+
+/* Tarjeta que muestra cada cantidad del resumen */
+.resumen-tarjeta {
+    background-color: #E6F1EB;
+    border: 1px solid #C9DFD3;
+    border-radius: 0.75rem;
+    padding: 1.25rem 0.75rem;
+    height: 100%;
+}
+
+/* Número principal de cada tarjeta */
+.resumen-numero {
+    color: #2F6B5B;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+/* =========================================
+   FORMULARIOS Y FILTROS
+   ========================================= */
+
+/* Mejora la apariencia de las etiquetas */
+.form-label {
+    font-weight: 600;
+    color: #24352F;
+}
+
+/* Resalta el campo seleccionado */
+.form-control:focus,
+.form-select:focus {
+    border-color: #82B5A0;
+    box-shadow: 0 0 0 0.2rem rgba(47, 107, 91, 0.15);
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+
+/* Personaliza los botones principales */
+.btn-primary {
+    background-color: #2F6B5B;
+    border-color: #2F6B5B;
+}
+
+.btn-primary:hover {
+    background-color: #245345;
+    border-color: #245345;
+}
+
+/* =========================================
+   DISEÑO RESPONSIVE
+   ========================================= */
+
+@media (max-width: 576px) {
+
+    /* Reduce el tamaño del título en celulares */
+    h1 {
+        font-size: 1.65rem;
+    }
+
+    /* Reduce el tamaño de los números del resumen */
+    .resumen-numero {
+        font-size: 1.6rem;
+    }
+
+    /* Evita que el encabezado ocupe demasiado espacio */
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}

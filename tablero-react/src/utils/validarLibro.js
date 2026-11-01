@@ -7,9 +7,14 @@ export function validarLibro(datos) {
 
     const errores = {};
 
-    // Verifica que el título no esté vacío.
+    // Validamos que el título no esté vacío.
     if (!datos.titulo.trim()) {
         errores.titulo = "Debes escribir el título del libro.";
+    }
+
+    // Validamos que tenga al menos 2 caracteres.
+    else if (datos.titulo.trim().length < 2) {
+        errores.titulo = "El título debe tener al menos 2 caracteres.";
     }
 
     // Verifica que se indique un autor.

@@ -1,53 +1,86 @@
 /*
 Componente principal de Estantería Común.
 
-Aquí guardamos el estado de los libros y
-las funciones que permiten modificarlos.
+Responsabilidades:
+- Guardar la lista de libros con useState.
+- Guardar los filtros seleccionados.
+- Agregar nuevos libros.
+- Cambiar estados de lectura.
+- Eliminar libros.
+- Enviar datos y funciones a los componentes.
 */
 
-// useState permite guardar información que puede cambiar.
 import { useState } from "react";
 
-// Componentes de diseño.
+// Componentes generales.
 import Pagina from "./componentes/layout/Pagina.jsx";
 import Panel from "./componentes/comunes/Panel.jsx";
 
-// Componente para mostrar los libros.
+// Componentes del tablero.
 import ListaLibros from "./componentes/libros/ListaLibros.jsx";
+import Filtros from "./componentes/filtros/Filtros.jsx";
+import Resumen from "./componentes/resumen/Resumen.jsx";
+import FormularioLibro from "./componentes/formulario/FormularioLibro.jsx";
 
-// Datos iniciales.
+// Datos iniciales y funciones auxiliares.
 import { LIBROS_INICIALES } from "./data/libros.js";
-
-// Función para obtener el siguiente estado de lectura.
 import { siguienteEstado } from "./utils/libros.js";
 
 function App() {
 
     /*
-    Creamos una variable de estado llamada libros.
+    ESTADOS DE REACT
 
-    libros: contiene la lista actual.
-    setLibros: permite actualizar esa lista.
-
-    Al iniciar, usamos los datos de libros.js.
+    libros: lista actual del tablero.
+    filtroEstado: estado seleccionado.
+    filtroMiembro: miembro seleccionado.
     */
+
     const [libros, setLibros] = useState(LIBROS_INICIALES);
 
+    const [filtroEstado, setFiltroEstado] = useState("Todos");
+
+    const [filtroMiembro, setFiltroMiembro] = useState("Todos");
+
     /*
-    Cambia el estado de un libro.
+    FUNCIÓN AGREGAR
 
-    map() recorre todos los libros.
-    Si encuentra el id indicado, crea una copia
-    del libro con el siguiente estado.
+    Recibe los datos del formulario.
+    Crea un libro nuevo con:
+    - Un identificador único dentro de esta sesión.
+    - Estado inicial Pendiente.
 
-    Los demás libros quedan iguales.
+    Después agrega el libro a un arreglo nuevo.
+    */
+    function agregar(datos) {
+
+        // Buscamos el id mayor para evitar repetirlo.
+        const mayorId = libros.reduce(
+            (mayor, libro) => Math.max(mayor, libro.id),
+            0
+        );
+
+        const nuevoLibro = {
+            id: mayorId + 1,
+            ...datos,
+            estado: "Pendiente"
+        };
+
+        // Creamos un arreglo nuevo sin modificar el anterior.
+        setLibros([...libros, nuevoLibro]);
+    }
+
+    /*
+    FUNCIÓN AVANZAR
+
+    Cambia el estado del libro indicado.
+    Utilizamos map() para crear un arreglo actualizado.
     */
     function avanzar(id) {
 
         const librosActualizados = libros.map((libro) => {
 
             if (libro.id === id) {
-
                 return {
                     ...libro,
                     estado: siguienteEstado(libro.estado)
@@ -57,15 +90,13 @@ function App() {
             return libro;
         });
 
-        // Actualizamos la lista en React.
         setLibros(librosActualizados);
     }
 
     /*
-    Elimina un libro de la lista.
+    FUNCIÓN QUITAR
 
-    filter() crea un arreglo nuevo que contiene
-    únicamente los libros con un id diferente.
+    Elimina el libro seleccionado utilizando filter().
     */
     function quitar(id) {
 
@@ -76,6 +107,27 @@ function App() {
         setLibros(librosActualizados);
     }
 
+    /*
+    FILTRADO DE LIBROS
+
+    Primero comprobamos el estado.
+    Después comprobamos el miembro.
+
+    Si el filtro dice "Todos", no limita los resultados.
+    */
+    const librosFiltrados = libros.filter((libro) => {
+
+        const coincideEstado =
+            filtroEstado === "Todos" ||
+            libro.estado === filtroEstado;
+
+        const coincideMiembro =
+            filtroMiembro === "Todos" ||
+            libro.miembro === filtroMiembro;
+
+        return coincideEstado && coincideMiembro;
+    });
+
     return (
         <Pagina>
 
@@ -83,22 +135,44 @@ function App() {
                 Tablero de lecturas
             </h1>
 
+            {/* Resumen general de todos los libros */}
+            <Panel titulo="Resumen de lecturas">
+
+                <Resumen libros={libros} />
+
+            </Panel>
+
+            {/* Controles para filtrar los libros */}
+            <Panel titulo="Filtrar libros">
+
+                <Filtros
+                    filtroEstado={filtroEstado}
+                    filtroMiembro={filtroMiembro}
+                    onCambiarEstado={setFiltroEstado}
+                    onCambiarMiembro={setFiltroMiembro}
+                />
+
+            </Panel>
+
+            {/* Lista que responde a los filtros seleccionados */}
             <Panel titulo="Libros del club">
 
-                {/* Enviamos los datos y funciones mediante props */}
+                <p className="text-muted">
+                    Mostrando {librosFiltrados.length} de {libros.length} libros.
+                </p>
+
                 <ListaLibros
-                    libros={libros}
+                    libros={librosFiltrados}
                     onAvanzar={avanzar}
                     onQuitar={quitar}
                 />
 
             </Panel>
 
-            <Panel titulo="Resumen de lecturas">
+            {/* Formulario para agregar libros nuevos */}
+            <Panel titulo="Agregar un libro">
 
-                <p className="mb-0">
-                    Actualmente hay {libros.length} libros en el tablero.
-                </p>
+                <FormularioLibro onAgregar={agregar} />
 
             </Panel>
 
