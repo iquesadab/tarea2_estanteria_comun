@@ -1,6 +1,11 @@
 # Estantería Común
+**Proyecto del curso SOFT-12 — Desarrollo Web Full Stack.**  
+**Estudiante:** Ivannia Quesada Bogantes  
+**Sección:** SCV2  
+**Periodo:** III cuatrimestre 2026  
+**Docente:** Álvaro Cordero Peña
 
-Tarea 2 - Programación Web Avanzada
+**Tarea 2**
 
 ## Descripción
 
@@ -134,4 +139,4 @@ La siguiente tabla muestra los commits realizados durante el desarrollo del proy
 | 14 | cee76bf | 2026-10-31 | [new]: Agrega filtros resumen y formulario React | Filtros combinados, resumen dinámico y formulario con validaciones. |
 | 15 | 66cc2cc | 2026-11-01 | [fix]: Corrige errores de contraste en la Parte A | Ajustes de colores Sass para mejorar la accesibilidad. |
 | 16 | bd092e4 | 2026-11-01 | [docs]: Completa documentación y revisión final | Actualización del README y documentación del proyecto. |
-
+| 17 | d2c6ecc | 2026-11-01 | [docs]: Agrega historial completo de commits al README. |
